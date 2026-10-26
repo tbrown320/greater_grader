@@ -1,0 +1,12 @@
+body {
+  padding-top: 80px;
+  word-wrap: break-word;
+}
+img {
+  height: 200px;
+}
+
+.assignment .fa {
+  font-size: 20px;
+  cursor: pointer;
+}

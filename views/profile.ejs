@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <title>Grade Calculator</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1>Grade Calculator</h1>
+        <p>Logged in as <%= user.local.email %></p>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- CURRENT GRADER -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3>Current Grade</h3>
+                <!-- if we have data in currentGrade then we will display it here -->
+                <% if (currentGrade !== null) { %>
+                    <h1><%= currentGrade %>%</h1>
+                    <p>Letter Grade: <%= letterGrade %></p>
+                    <p>Based on <%= assignments.length %> assignment(s)</p>
+                    <% } else { %>
+                    <p>No assignments entered yet, add your first one below!</p>
+                    <% } %>
+            </div>
+        </div>
+        <div class="col-sm-6">
+          <h3>Assignments</h3>
+          <ul class="assignments">
+          <% for(let i=0; i<assignments.length; i++) {%>
+            <li class="assignment" data-id="<%= assignments[i]._id %>">
+              <span><%= assignments[i].assignment %></span>
+              <span><%= assignments[i].grade %></span>
+              <input type="number" class="newGrade" placeholder="New Grade">
+              <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
+              <span><i class="fa fa-times" aria-hidden="true"></i></span>
+            </li>
+          <% } %>
+          </ul>
+
+          <h2>Add an assignment</h2>
+          <form action="/assignments" method="POST">
+            <input type="text" placeholder="Assignment Name" name="assignment">
+            <input type="number" placeholder="Grade (0-100)" name="grade">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
