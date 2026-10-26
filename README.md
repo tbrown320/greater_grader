@@ -4,6 +4,8 @@
 
 ![Greater Grader screenshot](GreaterGrader.png)
 
+**Live Link** Hosted at: https://greater-grader.onrender.com
+
 ## Features
 
 - **User accounts:** sign up and log in with email and password. Passwords are hashed with bcrypt, and sessions are handled by Passport.
